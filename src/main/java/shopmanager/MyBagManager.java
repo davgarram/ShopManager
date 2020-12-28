@@ -4,9 +4,12 @@
 package shopmanager;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 import java.util.logging.Logger;
@@ -122,6 +125,13 @@ public class MyBagManager implements BagManager {
 	public void reset() {
 		// Debería restaurar el stock, pero por ahora no se hace, sólo borra
 		cesta.clear();
+		
+	}
+	public ListIterator<Product> getIdIterator()
+	{
+		ArrayList<Product> productosEnCesta= new ArrayList<Product>(cesta.values());
+		Collections.sort(productosEnCesta,new IdComparator());
+		return productosEnCesta.listIterator();
 		
 	}
 
