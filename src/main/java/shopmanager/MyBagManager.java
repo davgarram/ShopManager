@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import exceptions.NoEnoughStock;
 import exceptions.NotInStock;
 import exceptions.UnknownRepo;
+import model.IdComparator;
 import model.MyOrder;
 import model.Order;
 import model.Product;
@@ -129,8 +130,8 @@ public class MyBagManager implements BagManager {
 	}
 	public ListIterator<Product> getIdIterator()
 	{
-		ArrayList<Product> productosEnCesta= new ArrayList<Product>(cesta.values());
-		Collections.sort(productosEnCesta,new IdComparator());
+		ArrayList<Product> productosEnCesta = new ArrayList<Product>(cesta.values());
+		Collections.sort(productosEnCesta, new IdComparator());
 		return productosEnCesta.listIterator();
 		
 	}
