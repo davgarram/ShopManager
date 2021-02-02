@@ -21,4 +21,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Log
-      run: echo "${{ github.event.actor.login }} ${{ github.event.type }} the issue ${{ github.event.id }}"
+      if: (github.event_name =="workflow_dispatch") 
+      run: echo "${{ github.actor.login }} activated this manually"
+      else:
+      run: echo "${{ github.actor.login }} created or moved an issue"
