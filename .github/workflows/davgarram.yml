@@ -21,11 +21,11 @@ jobs:
     steps:
     - name: Log manual
       if: (github.event_name =='workflow_dispatch') 
-      run: echo "${{ github.actor.login }} activated this manually"
+      run: echo "${{ github.actor}} activated this manually"
   issue:
       
       runs-on: ubuntu-latest
       steps:
         - name: Log automatico (issue)
           if: (github.event_name =='issues') 
-          run: echo "${{ github.actor.login }} created or moved an issue"
+          run: echo "${{ github.actor}} created or moved an issue"
