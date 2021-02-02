@@ -13,15 +13,17 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  log:
-    # The type of runner that the job will run on
+  manual:
+    if: (github.event_name =="workflow_dispatch") 
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Log
-      if: (github.event_name =="workflow_dispatch") 
+    - name: Log manual
       run: echo "${{ github.actor.login }} activated this manually"
-      else:
-      run: echo "${{ github.actor.login }} created or moved an issue"
+  issue:
+      if: (github.event_name =="issues") 
+      runs-on: ubuntu-latest
+      steps:
+        - name: Log automatico (issue)
+          run: echo "${{ github.actor.login }} created or moved an issue"
