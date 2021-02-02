@@ -14,16 +14,18 @@ on:
 jobs:
   # This workflow contains a single job called "greet"
   manual:
-    if: (github.event_name =="workflow_dispatch") 
+    
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Log manual
+      if: (github.event_name =="workflow_dispatch") 
       run: echo "${{ github.actor.login }} activated this manually"
   issue:
-      if: (github.event_name =="issues") 
+      
       runs-on: ubuntu-latest
       steps:
         - name: Log automatico (issue)
+          if: (github.event_name =="issues") 
           run: echo "${{ github.actor.login }} created or moved an issue"
