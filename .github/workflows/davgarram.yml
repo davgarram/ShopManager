@@ -6,7 +6,9 @@ name: davgarram
 # or API.
 on:
   issues:
-    types: [opened, transferred]
+    types: [opened]
+  project_card:
+    types: [moved]
   workflow_dispatch:
     
 
@@ -27,5 +29,5 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Log automatico (issue)
-          if: (github.event_name =='issues') 
+          if: (github.event_name =='issues'||github.event_name =='project_card') 
           run: echo "${{ github.actor}} created or moved an issue"
